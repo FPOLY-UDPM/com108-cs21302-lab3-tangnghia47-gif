@@ -20,15 +20,45 @@
 // o X2 = (-b – căn(delta))/(2*a)
 
 #include <stdio.h>
+#include <math.h>
 
-int main(){
-    
-    // Khai báo biến
+int main() {
+    float a, b, c;
+    printf("Nhap a, b, c: ");
+    scanf("%f%f%f", &a, &b, &c);
 
+    // Trường hợp a = 0 → phương trình bậc 1
+    if (a == 0) {
+        if (b == 0) {
+            if (c == 0) {
+                printf("Phuong trinh vo so nghiem.\n");
+            } else {
+                printf("Phuong trinh vo nghiem.\n");
+            }
+        } else {
+            float x = -c / b;
+            printf("Phuong trinh bac 1 co nghiem x = %.2f\n", x);
+        }
+    }
+    // Trường hợp a ≠ 0 → phương trình bậc 2
+    else {
+        float delta = b*b - 4*a*c;
 
-    // Nhập dữ liệu
+        if (delta < 0) {
+            printf("Phuong trinh vo nghiem.\n");
+        }
+        else if (delta == 0) {
+            float x = -b / (2*a);
+            printf("Phuong trinh co nghiem kep x = %.2f\n", x);
+        }
+        else {
+            float x1 = (-b + sqrt(delta)) / (2*a);
+            float x2 = (-b - sqrt(delta)) / (2*a);
+            printf("Phuong trinh co 2 nghiem phan biet:\n");
+            printf("x1 = %.2f\n", x1);
+            printf("x2 = %.2f\n", x2);
+        }
+    }
 
-
-    // Xử lý, tính toán VÀ Hiển thị kết quả
-
+    return 0;
 }
